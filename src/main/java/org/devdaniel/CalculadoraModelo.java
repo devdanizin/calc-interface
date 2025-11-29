@@ -24,5 +24,43 @@ public class CalculadoraModelo {
         this.operadorAtual = operadorAtual;
     }
 
+    public void limpar() {
+        primeiroNumero = 0;
+        segundoNumero = 0;
+        operadorAtual = "";
+    }
+
+    public double calcular() throws ArithmeticException {
+        double resultado = 0;
+
+        switch (operadorAtual) {
+
+            case "+": {
+                resultado = primeiroNumero + segundoNumero;
+                break;
+            }
+            case "-": {
+                resultado = primeiroNumero - segundoNumero;
+                break;
+            }
+            case "*": {
+                resultado = primeiroNumero * segundoNumero;
+                break;
+            }
+            case "/": {
+                if(segundoNumero == 0) {
+                    throw new ArithmeticException("Divisão por zero não e possível.");
+                }
+
+                resultado = primeiroNumero / segundoNumero;
+                break;
+            }
+            default: {
+                resultado = segundoNumero;
+            }
+        }
+
+        return resultado;
+    }
 
 }
